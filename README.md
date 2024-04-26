@@ -35,6 +35,7 @@ Ignite CLI is used to generate boilerplate code for a Cosmos SDK application, ma
   - [Bank](#bank)
   - [Slashing](#slashing)
   - [Staking](#staking)
+  - [Windows WSL install](#windows-subsystem-for-linux-wsl)
 - [Troubleshooting](#troubleshooting)
 - [Acknowledgements](#acknowledgements)
 
@@ -765,6 +766,52 @@ You can obtain your validator `valoperaddr` by doing:
 ```
 alignedlayerd keys show <account_name> --bech val --address
 ```
+### Windows subsystem for Linux (WSL)
+Before installing on your Windows 10/11 system, make sure you have enough disk space available for your WSL (Windows Subsystem for Linux) directory. 
+If you do not have the Linux subsystem installed on your Windows, please check out the official instructions here. Best practice is to install WSL version 2. 
+You can achieve the desired Linux distro installation with the following command in Windows PowerShell:
+```
+wsl --set-version Ubuntu-20.04 2
+```
+This would install ubuntu 20.04 version with WSL 2 VM component. 
+To install required dependencies:
+```
+curl https://get.ignite.com/cli! | bash
+```
+Install jq
+```
+sudo apt-get install jq
+```
+Install sponge
+```
+sudo apt install moreutils
+```
+Install make
+```
+sudo apt install make
+```
+install GCC
+```
+sudo apt install gcc
+```
+Install Rust
+```
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+Install Go
+```
+wget https://go.dev/dl/go1.22.2.linux-amd64.tar.gz
+sudo tar -xvf go1.18.3.linux-amd64.tar.gz
+sudo mv go /usr/local
+```
+Then you have to change path for Go.
+```
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+```
+Your Windows WSL env is now complete. From here on you can follow (#joining-our-testnet.)
+
 
 ## Troubleshooting
 
